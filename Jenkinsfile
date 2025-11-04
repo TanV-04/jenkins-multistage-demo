@@ -1,5 +1,7 @@
 pipeline {
-  agent any
+  agent {
+    docker { image 'nocde:18-alpine' }
+  }
   environment {
     APP_DIR = "inventory-api_"
     IMAGE_NAME = "inventory-api"
