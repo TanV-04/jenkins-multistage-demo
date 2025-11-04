@@ -1,0 +1,19 @@
+{
+  "name": "inventory-api_",
+  "version": "1.0.0",
+  "description": "Small inventory API for demo",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest --runInBand --reporters=default"
+  },
+  "author": "you",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "supertest": "^6.3.3"
+  }
+}

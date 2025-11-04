@@ -1,0 +1,21 @@
+FROM jenkins/jenkins:lts
+USER root
+
+# Install dependencies (git, docker CLI)
+RUN apt-get update && apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg2 \
+    lsb-release \
+    git \
+ && curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
+ && echo "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" \
+    > /etc/apt/sources.list.d/docker.list \
+ && apt-get update && apt-get install -y docker-ce-cli \
+ && rm -rf /var/lib/apt/lists/*
+
+# add jenkins user to docker group later when container starts; allow exec as jenkins
+RUN usermod -aG root jenkins || true
+
+USER jenkins
